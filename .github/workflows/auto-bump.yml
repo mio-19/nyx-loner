@@ -31,11 +31,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure sandboxing
-        run: |
-          sed -i -e '/^build-users-group =/d' -e 's/max-jobs =.*/max-jobs = 8/g' /etc/nix/nix.conf
-          nix eval ./maintenance#_dev.nixConfig --json | jq -r 'to_entries[] | "\(.key) = \(.value | join(" "))"' >> /etc/nix/nix.conf
-
       - name: Configure git
         run: |
           set -e
