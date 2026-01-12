@@ -7,7 +7,8 @@ pull_request_rules:
           - label=auto_bump
           - label=github_actions
           - check-success=flake check
+          - check-success=All Garnix checks
     actions:
       update:
       merge:
-        method: squash
+        method: rebase
